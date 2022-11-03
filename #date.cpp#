@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cstdio>
+#include "date.h"
+
+using namespace std;
+
+// This is the default constructor. A constructor does not have a return type.
+// :: is the namespace resolution operator, to its left is the name of the class.
+Date::Date() :year(1970), month(1), day(1) {
+  cout << "Date(" << this << ") default constructor activated" << endl;
+}
+
+Date::Date(int y, int m, int d) : year(y), month(m), day(d) {
+  // year = y;
+  // month = m;
+  // day = d;
+  // : is the initialise colon
+  cout << "Date(" << this << ") constructor activated" << endl;
+}
+
+Date::Date(const Date &source) : year(source.year), month(source.month), day (source.day) {
+  cout << "Date(" << this << ") copy constructor activated" << endl;
+}
+
+void Date::print() {
+  cout << "Date(" << this << ") print operation activated" << endl;
+  char buffer[512];// buffer array with 512 characters.
+  sprintf(buffer, "%02d/%02d/%04d", this->day, this->month, this->year);
+  //sprintf is structured printing into the buffer array, include <cstdio>.
+  cout << buffer << endl;
+}
